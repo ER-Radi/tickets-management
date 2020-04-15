@@ -5,4 +5,13 @@
          version="3.1">
 
     <display-name>Ticket</display-name>
+
+    <!--
+     - Cette classe sera instanciée au démarrage de l'application web par le serveur d'application.
+     - Le serveur appelle ensuite la méthode contextInitialized sur l'instance qu'il vient de créer.
+     - Cette méthode crée l'instance de ManagerFactory et l'injecte dans l'attribut static dédié (managerFactory) de la classe AbstractResource.
+    -->
+    <listener>
+        <listener-class>org.example.demo.ticket.webapp.listener.DependencyInjectionListener</listener-class>
+    </listener>
 </web-app>
