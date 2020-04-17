@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- ===== Déclaration des Managers ===== -->
+    <bean id="projetManager" class="org.example.demo.ticket.business.impl.manager.ProjetManagerImpl"/>
+    <bean id="ticketManager" class="org.example.demo.ticket.business.impl.manager.TicketManagerImpl"/>
+
+    <!-- ===== ManagerFactory ===== -->
+    <bean id="managerFactory" class="org.example.demo.ticket.business.impl.ManagerFactoryImpl">
+        <property name="projetManager" ref="projetManager"/>
+        <property name="ticketManager" ref="ticketManager"/>
+    </bean>
+
+    <!-- ==== AbstractResource ===== -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.example.demo.ticket.webapp.rest.resource.AbstractResource"/>
+        <property name="targetMethod" value="setManagerFactory"/>
+        <property name="arguments" ref="managerFactory"/>
+    </bean>
+</beans>

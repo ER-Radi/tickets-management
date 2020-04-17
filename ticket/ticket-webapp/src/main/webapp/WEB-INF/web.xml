@@ -11,7 +11,18 @@
      - Le serveur appelle ensuite la méthode contextInitialized sur l'instance qu'il vient de créer.
      - Cette méthode crée l'instance de ManagerFactory et l'injecte dans l'attribut static dédié (managerFactory) de la classe AbstractResource.
     -->
+    <!--
     <listener>
         <listener-class>org.example.demo.ticket.webapp.listener.DependencyInjectionListener</listener-class>
     </listener>
+    -->
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/applicationContext.xml</param-value>
+    </context-param>
+
 </web-app>
