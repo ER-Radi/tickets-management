@@ -11,12 +11,15 @@ import org.example.demo.ticket.model.bean.ticket.Ticket;
 import org.example.demo.ticket.model.exception.NotFoundException;
 import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
 
+import javax.inject.Named;
+
 
 /**
  * Manager des beans du package Ticket.
  *
  * @author lgu
  */
+@Named
 public class TicketManagerImpl implements TicketManager {
 
     @Override

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd">
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- ===== Déclaration des Managers ===== -->
-    <bean id="projetManager" class="org.example.demo.ticket.business.impl.manager.ProjetManagerImpl"/>
-    <bean id="ticketManager" class="org.example.demo.ticket.business.impl.manager.TicketManagerImpl"/>
+    <!-- Prend en compte la configuration des injections (@Inject, @Autowired...) -->
+    <context:annotation-config/>
 
-    <!-- ===== ManagerFactory ===== -->
-    <bean id="managerFactory" class="org.example.demo.ticket.business.impl.ManagerFactoryImpl">
-        <property name="projetManager" ref="projetManager"/>
-        <property name="ticketManager" ref="ticketManager"/>
-    </bean>
+    <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named, @Component...) -->
+    <context:component-scan base-package="org.example.demo.ticket"/>
 
     <!-- ==== AbstractResource ===== -->
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
@@ -21,4 +20,5 @@
         <property name="targetMethod" value="setManagerFactory"/>
         <property name="arguments" ref="managerFactory"/>
     </bean>
+
 </beans>

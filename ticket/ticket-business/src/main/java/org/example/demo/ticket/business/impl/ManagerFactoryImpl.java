@@ -6,9 +6,23 @@ import org.example.demo.ticket.business.contract.manager.TicketManager;
 import org.example.demo.ticket.business.impl.manager.ProjetManagerImpl;
 import org.example.demo.ticket.business.impl.manager.TicketManagerImpl;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+/*
+    @ManagedBean (JSR-250), @Named (JSR-330) ou @Component (Spring)
+    => La classe se signale en tant que bean injectable
+ */
+@Named("managerFactory")
 public class ManagerFactoryImpl implements ManagerFactory {
 
+    /*
+        @Inject (JSR-330) ou @Autowired (Spring)
+     */
+    @Inject
     private ProjetManager projetManager;
+
+    @Inject
     private TicketManager ticketManager;
 
     @Override
