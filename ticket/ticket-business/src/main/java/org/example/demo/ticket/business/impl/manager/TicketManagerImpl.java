@@ -17,7 +17,7 @@ import org.example.demo.ticket.model.recherche.ticket.RechercheTicket;
  *
  * @author lgu
  */
-public class TicketManagerImpl implements TicketManager {
+public class TicketManagerImpl extends AbstractManager implements TicketManager {
 
     @Override
     public Ticket getTicket(Long pNumero) throws NotFoundException {

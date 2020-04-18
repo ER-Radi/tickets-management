@@ -6,8 +6,14 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- ===== Déclaration des Managers ===== -->
-    <bean id="projetManager" class="org.example.demo.ticket.business.impl.manager.ProjetManagerImpl"/>
-    <bean id="ticketManager" class="org.example.demo.ticket.business.impl.manager.TicketManagerImpl"/>
+    <bean id="abstractManager" abstract="true">
+        <property name="daoFactory" ref="daoFactory" />
+    </bean>
+
+    <bean id="projetManager" class="org.example.demo.ticket.business.impl.manager.ProjetManagerImpl"
+        parent="abstractManager"/>
+    <bean id="ticketManager" class="org.example.demo.ticket.business.impl.manager.TicketManagerImpl"
+        parent="abstractManager"/>
 
     <!-- ===== ManagerFactory ===== -->
     <bean id="managerFactory" class="org.example.demo.ticket.business.impl.ManagerFactoryImpl">

@@ -5,9 +5,6 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Inclusion d'autre fichiers de contexte Spring -->
-    <import resource="classpath:/org/example/demo/ticket/batch/batchContext.xml" />
-    <import resource="classpath:/org/example/demo/ticket/business/businessContext.xml" />
-    <import resource="classpath:/org/example/demo/ticket/consumer/consumerContext.xml" />
+    <bean id="daoFactory" class="org.example.demo.ticket.consumer.dao.DaoFactory" />
 
 </beans>

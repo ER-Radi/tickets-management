@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author lgu
  */
-public class ProjetManagerImpl implements ProjetManager {
+public class ProjetManagerImpl extends AbstractManager implements ProjetManager {
 
     @Override
     public Projet getProjet(Integer pId) throws NotFoundException {
