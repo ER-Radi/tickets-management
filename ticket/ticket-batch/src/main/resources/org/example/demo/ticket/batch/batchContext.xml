@@ -5,4 +5,23 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- Chargement du fichier conf/db-ticket.properties -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>file:${TICKET_HOME}/conf/db-ticket.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="false" />
+    </bean>
+
+    <!-- création d'un bean javax.sql.DataSource en utilisant
+         des propriétés chargées depuis le fichier conf/db-ticket.properties -->
+    <bean id="dataSourceTicket" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${database.ticket.driverClassName}"/>
+        <property name="url" value="${database.ticket.url}"/>
+        <property name="username" value="${database.ticket.username}"/>
+        <property name="password" value="${database.ticket.password}"/>
+    </bean>
+
 </beans>
