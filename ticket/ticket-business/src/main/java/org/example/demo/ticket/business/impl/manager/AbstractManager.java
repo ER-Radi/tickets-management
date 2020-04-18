@@ -1,6 +1,6 @@
 package org.example.demo.ticket.business.impl.manager;
 
-import org.example.demo.ticket.consumer.dao.DaoFactory;
+import org.example.demo.ticket.consumer.impl.DaoFactory;
 
 public abstract class AbstractManager {
 

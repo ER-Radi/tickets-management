@@ -6,6 +6,7 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Chargement du fichier conf/db-ticket.properties -->
+    <!--
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -14,14 +15,31 @@
         </property>
         <property name="ignoreUnresolvablePlaceholders" value="false" />
     </bean>
+    -->
 
     <!-- création d'un bean javax.sql.DataSource en utilisant
          des propriétés chargées depuis le fichier conf/db-ticket.properties -->
+    <!--
     <bean id="dataSourceTicket" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${database.ticket.driverClassName}"/>
         <property name="url" value="${database.ticket.url}"/>
         <property name="username" value="${database.ticket.username}"/>
         <property name="password" value="${database.ticket.password}"/>
+    </bean>
+    -->
+
+    <!-- Chargement du fichier properties contenant
+        la configuration de la datasource vers DB_TICKET  -->
+    <bean id="dataSourceTicketConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="file:${application.home}/conf/db-ticket.properties"/>
+    </bean>
+
+    <!-- Création de la datasource "dataSourceTicket" -->
+    <bean id="dataSourceTicket"
+          class="org.apache.commons.dbcp2.BasicDataSourceFactory"
+          factory-method="createDataSource"
+          destroy-method="close">
+        <constructor-arg ref="dataSourceTicketConfiguration"/>
     </bean>
 
 </beans>

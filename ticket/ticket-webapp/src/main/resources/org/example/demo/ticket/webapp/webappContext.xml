@@ -12,4 +12,9 @@
         <property name="targetMethod" value="setManagerFactory"/>
         <property name="arguments" ref="managerFactory"/>
     </bean>
+
+    <!-- ==== Resources JNDI ===== -->
+    <bean id="dataSourceTicket" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/DB_TICKET"/>
+    </bean>
 </beans>
