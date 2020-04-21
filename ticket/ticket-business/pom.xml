@@ -41,6 +41,10 @@
 
 
         <!-- ===== Bibliothèques tierces ===== -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
 
 
         <!-- ===== Tests ===== -->

@@ -5,6 +5,6 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="daoFactory" class="org.example.demo.ticket.consumer.impl.DaoFactory" />
+    <bean id="daoFactory" class="org.example.demo.ticket.consumer.impl.DaoFactoryImpl" />
 
 </beans>

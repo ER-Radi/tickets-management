@@ -21,4 +21,9 @@
         <property name="ticketManager" ref="ticketManager"/>
     </bean>
 
+    <!-- ===== txManagerTicket ===== -->
+    <bean id="txManagerTicket" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- Mapper les transactions logiques gérés par Spring aux transactions physiques sur la base de données -->
+        <property name="dataSource" ref="dataSourceTicket"/>
+    </bean>
 </beans>
